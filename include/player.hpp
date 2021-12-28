@@ -7,7 +7,7 @@ friend class Player;
 friend class Board;
 
 public:
-    Point(const int _x = 0, const int _y = 0) : x{_x}, y{_y} {}
+    explicit Point(const int _x = 0, const int _y = 0) : x{_x}, y{_y} {}
 
     Point operator+(const Point sec) const
     { 
