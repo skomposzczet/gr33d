@@ -14,12 +14,15 @@ public:
     }
 
     ~ncwrap() { endwin(); }
-    void ref() { ::refresh(); }
+    void refresh() { ::refresh(); }
 };
 
 int main()
 {
+    srand(static_cast<unsigned>(time(NULL)));
     ncwrap nc;
 
-    
+    Board board(22, 80);
+    board.draw();
+    board.wait();
 }
