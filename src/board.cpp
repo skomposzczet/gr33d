@@ -19,9 +19,9 @@ Board::Board(const int _height, const int _width)
         board.push_back(temp);
     }
 
-    Point ppos(Board::rand(width-1, 0), Board::rand(height-1, 0));
-    // player.set_position(Point(Board::rand(0, width), Board::rand(0, height)) );
-    at(ppos) = 0;
+    // Point ppos;
+    player.set_position(Point(Board::rand(width-1, 0), Board::rand(height-1, 0)) );
+    at(player.pos()) = 0;
 }
 
 void Board::draw()
@@ -32,6 +32,7 @@ void Board::draw()
         for (int x = 0 ; x < width ; x++)
             print(x, y);
 
+    wmove(board_window, player.pos());
     wrefresh(board_window);
 }
 
@@ -78,4 +79,9 @@ void Colorizer::set_color(WINDOW * window, int color)
         wattron(window, COLOR_PAIR(color = color%cyan + 1));
 
     last = color;
+}
+
+int wmove(WINDOW * win, Point xy)
+{
+    wmove(win, xy.gety(), xy.getx());
 }

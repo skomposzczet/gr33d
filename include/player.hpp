@@ -1,6 +1,8 @@
 #ifndef __PLAYER__H__
 #define __PLAYER__H__
 
+#include <string>
+
 class Point
 {
 friend class Player;
@@ -36,6 +38,9 @@ public:
         }
     }
 
+    int getx() const {return x;}
+    int gety() const {return y;}
+
     enum dir{up, down, right, left};
 private:
     int x;
@@ -68,11 +73,32 @@ private:
 
 class Player
 {
-friend class Board;
+// friend class Board;
 
 public:
+    Player() : score{0} {}
 
+    /// Sets new players position
+    void set_position(const Point new_position) {position = new_position;}
+    void set_position(const int x, const int y) {set_position(Point(x,y));}
+
+    /// @returns players x coord
+    int x() const {return position.getx();}
+
+    /// @returns players y coord
+    int y() const {return position.gety();}
+
+    /// @returns point with players coords
+    Point pos() const {return position;}
 private:
+    /// Players current coords
+    Point position;
+
+    /// Players name
+    // std::string name;
+
+    /// Players current score
+    int score;
 
 };
 
