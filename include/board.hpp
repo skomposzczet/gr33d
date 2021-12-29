@@ -8,6 +8,22 @@
 
 #include "player.hpp"
 
+class Colorizer
+{
+public:
+    Colorizer();
+
+    void set_color(WINDOW * window, int color);
+    void undo_color(WINDOW * window) {wattroff(window, COLOR_PAIR(last));}
+
+    enum colors{bw, red, green, yellow, blue, magenta, cyan};
+
+private:
+    int last;
+
+};
+
+
 class Board
 {
 public:
@@ -29,6 +45,8 @@ private:
 
     /// Current player
     Player player;
+
+    Colorizer colorizer;
 
     /// @return reference to element on board with coordinates held by @p p
     int & at(const Point p) {return board.at(p.y).at(p.x);}

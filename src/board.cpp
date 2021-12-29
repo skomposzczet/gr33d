@@ -48,6 +48,34 @@ void Board::print(const int x, const int y)
         wprintw(board_window, " ");
     else if (sym > 0 && sym < 10)
     {
+        colorizer.set_color(board_window, sym);
         wprintw(board_window, "%d", sym);
     }
+
+    colorizer.undo_color(board_window);
+}
+
+Colorizer::Colorizer()
+    : last{11}
+{
+    start_color(); 
+
+    init_pair(1, COLOR_RED, COLOR_BLACK);
+    init_pair(2, COLOR_GREEN, COLOR_BLACK);
+    init_pair(3, COLOR_YELLOW, COLOR_BLACK);
+    init_pair(4, COLOR_BLUE, COLOR_BLACK);
+    init_pair(5, COLOR_MAGENTA, COLOR_BLACK);
+    init_pair(6, COLOR_CYAN, COLOR_BLACK);
+
+    init_pair(10, COLOR_BLACK, COLOR_WHITE);
+}
+
+void Colorizer::set_color(WINDOW * window, int color)
+{
+    if (color == bw)
+        wattron(window, COLOR_PAIR(10));
+    else
+        wattron(window, COLOR_PAIR(color = color%cyan + 1));
+
+    last = color;
 }
