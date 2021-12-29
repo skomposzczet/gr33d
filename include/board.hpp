@@ -22,7 +22,7 @@ public:
     /// Resets last added color in @p window
     void undo_color() const {wattroff(window, COLOR_PAIR(last));}
 
-    enum colors{bw, red, green, yellow, blue, magenta, cyan};
+    enum colors{red=1, green, yellow, blue, magenta, cyan, bw=10};
 
 private:
     /// Keeps index of last used color
@@ -41,6 +41,9 @@ public:
 
     /// Draws board
     void draw();
+
+    /// Gets input from player and acts accordingly
+    void move();
 
     // debug purpose
     void wait() const { wgetch(board_window); }
@@ -90,6 +93,10 @@ private:
     /// @returns true if Point @p p is in range and not eaten
     bool valid(const Point p);
 
+    /// Moves player in @p direction
+    void player_move(const char direction);
+
+    /// Makes vector that moves point in @p direction
     static Point make_vector(const char direction);
 
     /// @returns random int from @p min : @p max , default is 1:9

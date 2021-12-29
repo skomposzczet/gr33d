@@ -82,6 +82,9 @@ public:
     void set_position(const Point new_position) {position = new_position;}
     void set_position(const int x, const int y) {set_position(Point(x,y));}
 
+    /// Adds @p pts to players score
+    void add_score(const int pts) {score += pts;}
+
     /// @returns players x coord
     int x() const {return position.getx();}
 

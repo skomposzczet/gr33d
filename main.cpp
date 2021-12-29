@@ -24,5 +24,7 @@ int main()
 
     Board board(22, 80);
     board.draw();
+    board.move();
+    board.draw();
     board.wait();
 }

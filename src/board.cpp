@@ -21,13 +21,13 @@ Board::Board(const int _height, const int _width)
         board.push_back(temp);
     }
 
-    // Point ppos;
     player.set_position(Point(Board::rand(width-1, 0), Board::rand(height-1, 0)) );
     at(player.pos()) = 0;
 }
 
 void Board::draw()
 {
+    wclear(board_window);
     box(board_window, 0 , 0);
 
     for (int y = 0 ; y < height ; y++)
@@ -46,6 +46,7 @@ void Board::draw()
 
 void Board::check_moves()
 {
+    possible_moves = "";
     int deltax = 0;
     int deltay = 0;
 
@@ -103,7 +104,7 @@ void Board::print(const int x, const int y, bool bg) const
     else if (sym > 0 && sym < 10)
     {
         if (bg)
-            colorizer.set_color(0);
+            colorizer.set_color(10);
         else
             colorizer.set_color(sym);
         wprintw(board_window, "%d", sym);
@@ -129,6 +130,55 @@ bool Board::valid(const Point p)
     return true;
 }
 
+void Board::move()
+{
+    std::string available{possible_moves+options};
+    int c;
+    while (1)
+    {
+        c = wgetch(board_window);
+        if (c == KEY_UP)
+            c = 'w';
+        else if (c == KEY_DOWN)
+            c = 's';
+        else if (c == KEY_LEFT)
+            c = 'a';
+        else if (c == KEY_RIGHT)
+            c = 'd';
+        
+        if (!contains(available, c))
+            continue;
+
+        if (c == 'h')
+        {
+            should_highlight = (should_highlight ? false : true);
+            draw();
+        }
+        // else if (c == '?')
+        // else if (c == 'l')
+
+        player_move(c);
+        break;
+    }
+}
+
+void Board::player_move(const char direction)
+{
+    Point vector{make_vector(direction)};
+    Point walker{player.pos()};
+    int length = at(walker+vector);
+
+    for (int i = 0 ; i < length ; i++)
+    {
+        at(walker) = -1;
+        walker = walker + vector;
+    }
+
+    at(walker) = 0;
+    player.set_position(walker);
+    player.add_score(length);
+}
+
 Colorizer::Colorizer()
     : last{11}
 {
@@ -147,7 +197,7 @@ Colorizer::Colorizer()
 void Colorizer::set_color(int color) const
 {
     if (color == bw)
-        wattron(window, COLOR_PAIR(10));
+        wattron(window, COLOR_PAIR(color));
     else
         wattron(window, COLOR_PAIR(color = color%cyan + 1));
 
