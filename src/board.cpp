@@ -3,11 +3,11 @@
 Board::Board(const int _height, const int _width)
     : height{_height}, width{_width}, should_highlight{true}
 {
-    colorizer.set_window(board_window);
-
     // initializing board window
     board_window = newwin(height+2, width+2, 0, 0);
     keypad(board_window, true);
+
+    colorizer.set_window(board_window);
 
     // initializng board
     board.reserve(height);
