@@ -32,7 +32,7 @@ void Board::draw()
         for (int x = 0 ; x < width ; x++)
             print(x, y);
 
-    wmove(board_window, player.pos());
+    wmove(board_window, player.y()+1, player.x()+1);
     wrefresh(board_window);
 }
 
@@ -83,5 +83,5 @@ void Colorizer::set_color(WINDOW * window, int color)
 
 int wmove(WINDOW * win, Point xy)
 {
-    wmove(win, xy.gety(), xy.getx());
+    return wmove(win, xy.gety(), xy.getx());
 }
