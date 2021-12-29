@@ -2,6 +2,9 @@
 #define __PLAYER__H__
 
 #include <string>
+#include <ncurses.h>
+
+#define WIDTH (34)
 
 class Point
 {
@@ -76,14 +79,11 @@ class Player
 // friend class Board;
 
 public:
-    Player() : score{0} {}
+    Player(const std::string _name);
 
     /// Sets new players position
     void set_position(const Point new_position) {position = new_position;}
     void set_position(const int x, const int y) {set_position(Point(x,y));}
-
-    /// Sets players username to @p _name
-    void set_name(const std::string _name) {name = _name;}
 
     /// Adds @p pts to players score
     void add_score(const int pts) {score += pts;}
@@ -105,6 +105,16 @@ private:
 
     /// Players current score
     int score;
+
+    /// Window displaying current players data and stuff
+    WINDOW * comm_window;
+
+    /// Window displaying current scoreboard
+    WINDOW * scoreboard;
+
+
+    /// Prints comm window with @p message as message
+    void print_comm(const std::string message) const;
 
 };
 

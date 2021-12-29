@@ -1,7 +1,7 @@
 #include "board.hpp"
 
 Board::Board(const std::string name, const int _height, const int _width)
-    : height{_height}, width{_width}, should_highlight{true}
+    : height{_height}, width{_width}, should_highlight{true}, player{name}
 {
     // initializing board window
     board_window = newwin(height+2, width+2, 0, 0);
@@ -23,7 +23,6 @@ Board::Board(const std::string name, const int _height, const int _width)
 
     player.set_position(Point(Board::rand(width-1, 0), Board::rand(height-1, 0)) );
     at(player.pos()) = 0;
-    player.set_name(name);
 }
 
 void Board::draw()
