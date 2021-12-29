@@ -82,6 +82,9 @@ public:
     void set_position(const Point new_position) {position = new_position;}
     void set_position(const int x, const int y) {set_position(Point(x,y));}
 
+    /// Sets players username to @p _name
+    void set_name(const std::string _name) {name = _name;}
+
     /// Adds @p pts to players score
     void add_score(const int pts) {score += pts;}
 
@@ -98,7 +101,7 @@ private:
     Point position;
 
     /// Players name
-    // std::string name;
+    std::string name;
 
     /// Players current score
     int score;

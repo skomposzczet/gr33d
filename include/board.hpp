@@ -37,7 +37,7 @@ private:
 class Board
 {
 public:
-    Board(const int _height, const int _width);
+    Board(const std::string name, const int _height = 22, const int _width = 80);
 
     /// Draws board
     void draw();

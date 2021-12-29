@@ -17,14 +17,19 @@ public:
     void refresh() { ::refresh(); }
 };
 
-int main()
+int main(int argc, char *argv[])
 {
     srand(static_cast<unsigned>(time(NULL)));
+    std::string name;
+    // std::cout << "What's your name? ";
+    // std::cin >> name;
+    name = "titane";
     ncwrap nc;
 
-    Board board(22, 80);
-    board.draw();
-    board.move();
-    board.draw();
-    board.wait();
+    Board board(name);
+    while(1)
+    {
+        board.draw();
+        board.move();
+    }
 }
