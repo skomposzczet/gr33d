@@ -14,17 +14,22 @@ class Colorizer
 public:
     Colorizer();
 
+    void set_window(WINDOW * win) {window = win;}
+
     /// Sets color in @p window
-    void set_color(WINDOW * window, int color) const;
+    void set_color(int color) const;
 
     /// Resets last added color in @p window
-    void undo_color(WINDOW * window) const {wattroff(window, COLOR_PAIR(last));}
+    void undo_color() const {wattroff(window, COLOR_PAIR(last));}
 
     enum colors{bw, red, green, yellow, blue, magenta, cyan};
 
 private:
     /// Keeps index of last used color
     mutable int last;
+
+    /// @param window window to work in
+    WINDOW * window;
 
 };
 

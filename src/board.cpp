@@ -3,6 +3,8 @@
 Board::Board(const int _height, const int _width)
     : height{_height}, width{_width}, should_highlight{true}
 {
+    colorizer.set_window(board_window);
+
     // initializing board window
     board_window = newwin(height+2, width+2, 0, 0);
     keypad(board_window, true);
@@ -101,13 +103,13 @@ void Board::print(const int x, const int y, bool bg) const
     else if (sym > 0 && sym < 10)
     {
         if (bg)
-            colorizer.set_color(board_window, 0);
+            colorizer.set_color(0);
         else
-            colorizer.set_color(board_window, sym);
+            colorizer.set_color(sym);
         wprintw(board_window, "%d", sym);
     }
 
-    colorizer.undo_color(board_window);
+    colorizer.undo_color();
 }
 
 bool Board::valid(const Point p)
@@ -142,7 +144,7 @@ Colorizer::Colorizer()
     init_pair(10, COLOR_BLACK, COLOR_WHITE);
 }
 
-void Colorizer::set_color(WINDOW * window, int color) const
+void Colorizer::set_color(int color) const
 {
     if (color == bw)
         wattron(window, COLOR_PAIR(10));
