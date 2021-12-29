@@ -15,16 +15,16 @@ public:
     Colorizer();
 
     /// Sets color in @p window
-    void set_color(WINDOW * window, int color);
+    void set_color(WINDOW * window, int color) const;
 
     /// Resets last added color in @p window
-    void undo_color(WINDOW * window) {wattroff(window, COLOR_PAIR(last));}
+    void undo_color(WINDOW * window) const {wattroff(window, COLOR_PAIR(last));}
 
     enum colors{bw, red, green, yellow, blue, magenta, cyan};
 
 private:
     /// Keeps index of last used color
-    int last;
+    mutable int last;
 
 };
 
@@ -48,6 +48,17 @@ private:
     const int height;
     const int width;
 
+    /// String containing all possible moves
+    const std::string moves{"qweasdzc"};
+    /// String containing all possible options to call during game
+    const std::string options{"lhb?"};
+
+    /// String containing all currently possible moves
+    std::string possible_moves;
+
+    /// Indicates if highlight is on, default is true
+    bool should_highlight;
+
     /// Current player
     Player player;
 
@@ -57,12 +68,30 @@ private:
     /// @return reference to element on board with coordinates held by @p p
     int & at(const Point p) {return board.at(p.y).at(p.x);}
     int & at(const int x, const int y) { return at(Point(x,y));}
+    int at(const Point p) const {return board.at(p.y).at(p.x);}
+    int at(const int x, const int y) const { return at(Point(x,y));}
 
     /// Prints symbol from board in proper way
-    void print(const int x, const int y);
+    /// @param bg If true point is printed as highlighted
+    void print(const int x, const int y, bool bg = false) const;
+    void print(const Point p, bool bg = false) const {print(p.x, p.y, bg);}
+
+    /// Finds possible moves and saves them to possible_moves
+    void check_moves();
+
+    /// Highlights possible moves
+    void highlight() const;
+
+    /// @returns true if Point @p p is in range and not eaten
+    bool valid(const Point p);
+
+    static Point make_vector(const char direction);
 
     /// @returns random int from @p min : @p max , default is 1:9
     static int rand(const int max = 9, const int min = 1) {return ::rand()%(max-min) + min;}
+
+    /// @returns true if @p needle is in @p haystack
+    static bool contains(const std::string haystack, const char needle); 
 };
 
 /// ncurses wmove but handles Point class
