@@ -3,6 +3,9 @@
 
 #include <string>
 #include <vector>
+#include <cstdlib>
+#include <filesystem>
+#include <fstream>
 #include <ncurses.h>
 
 #define WIDTH (34)
@@ -116,12 +119,18 @@ private:
     /// Best total scores so far
     std::vector< std::pair<std::string, int> > top_scores;
 
+    /// Users gr33d home directory
+    const std::string GR33D = getenv("HOME") + std::string{"/.gr33d"};
+
 
     /// Prints comm window with @p message as message
     void print_comm(const std::string message) const;
 
     /// Prints scoreboard
     void print_scoreboard() const;
+
+    ///@returns true if players username is used for the first time
+    bool first_time() const;
 
 };
 

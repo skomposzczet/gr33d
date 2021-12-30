@@ -6,7 +6,9 @@ Player::Player(const std::string _name)
     comm_window = newwin(10, WIDTH+2, 0, 83);
     scoreboard = newwin(14, WIDTH+2, 10, 83);
 
-    print_comm("here will be mean message");
+    std::string message = (first_time() ? "new retard on the block" : "this fuxxer again");
+
+    print_comm(message);
     
     print_scoreboard();
 }
@@ -30,4 +32,27 @@ void Player::print_scoreboard() const
     for (unsigned i = 0 ; i < top_scores.size() ; i++)
         mvwprintw(scoreboard, 3+i, 1, "%2d. %17.17s  %4d %5.2lf%%", i+1, top_scores.at(i).first.data(), top_scores.at(i).second, 100.0*top_scores.at(i).second/1760);
     wrefresh(scoreboard);
+}
+
+bool Player::first_time() const
+{
+    std::string filepath = GR33D + "/name_list.dat";
+    std::ifstream name_list(filepath);
+    if (name_list.is_open())
+    {
+        std::string temp_un;
+
+        while(getline(name_list, temp_un))
+        {
+            if (temp_un == name)
+            {
+                return false;
+                break;
+            }
+        }
+
+        name_list.close();
+    }
+
+    return true;
 }
