@@ -1,5 +1,4 @@
 #include "board.hpp"
-#include "header.hpp"
 
 Board::Board(const std::string name, const int _height, const int _width)
     : height{_height}, width{_width}, should_highlight{true}, player{name}

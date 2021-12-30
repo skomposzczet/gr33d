@@ -1,5 +1,4 @@
 #include "player.hpp"
-#include "header.hpp"
 
 const std::vector<std::string> Player::mean_val{"Great fxxkin move idiot.", "You're real genius.", "Bravo.", "Wow.", "You are doing great. Not.", "Finally.", "Monkey would do better.", "You're a lost cause.", "You really thought it's good idea.", "LMAO", "XDDDDDDDDDD", "You're gonna fxxk it up"};
 const std::vector<std::string> Player::mean_inv{"You can't go there idiot.", "Wrong way. Obviously.", "HAHA!", "Really?", "XDDDDDDDDDD"};

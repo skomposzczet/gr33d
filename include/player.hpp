@@ -9,6 +9,8 @@
 #include <algorithm>
 #include <ncurses.h>
 
+#include "header.hpp"
+
 #define WIDTH (34)
 
 class Point
