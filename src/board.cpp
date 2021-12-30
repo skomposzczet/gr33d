@@ -149,6 +149,7 @@ void Board::move()
         if (!contains(available, c))
         {
             player.wrong_move();
+            wmove(board_window, player.pos()+Point(1,1));
             continue;
         }
 

@@ -140,7 +140,7 @@ private:
     static const std::vector<std::string> mean_inv;
     /// Message types recognized by mean_message()
     /// @see mean_message()
-    enum mess_type{valid, invalid};
+    enum mess_type{invalid, valid};
 
     /// Prints comm window with @p message as message
     void print_comm(const std::string message) const;
