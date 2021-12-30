@@ -36,8 +36,7 @@ void Player::print_scoreboard() const
 
 bool Player::first_time() const
 {
-    std::string filepath = GR33D + "/name_list.dat";
-    std::ifstream name_list(filepath);
+    std::ifstream name_list(GR33D + NAMELIST);
     if (name_list.is_open())
     {
         std::string temp_un;
@@ -55,4 +54,37 @@ bool Player::first_time() const
     }
 
     return true;
+}
+
+void Player::end()
+{
+    // save to best scores if fits
+    top_scores.emplace_back(name, score);
+    std::sort(top_scores.begin(), top_scores.end(), [](auto & p1, auto & p2){return (p1.second < p2.second);});
+    if (top_scores.size() > 10)
+        top_scores.pop_back();
+
+    std::ofstream scores_file(GR33D + SCORESFILE);
+
+    if (scores_file.is_open())
+    {
+        for (auto & p : top_scores)
+        {   
+            scores_file << p.first << std::endl;
+            scores_file << p.second << std::endl;
+        }  
+
+        scores_file.close();
+    }
+    
+    print_scoreboard();
+
+    // saving unsername to history
+    std::fstream name_list(GR33D + NAMELIST, std::fstream::app);
+    if (name_list.is_open())
+    {
+        name_list << name << std::endl;
+        name_list.close();
+    }
+
 }

@@ -6,6 +6,7 @@
 #include <cstdlib>
 #include <filesystem>
 #include <fstream>
+#include <algorithm>
 #include <ncurses.h>
 
 #define WIDTH (34)
@@ -80,8 +81,6 @@ private:
 
 class Player
 {
-// friend class Board;
-
 public:
     Player(const std::string _name);
 
@@ -100,6 +99,10 @@ public:
 
     /// @returns point with players coords
     Point pos() const {return position;}
+
+    //
+    void end();
+
 private:
     /// Players current coords
     Point position;
@@ -120,7 +123,11 @@ private:
     std::vector< std::pair<std::string, int> > top_scores;
 
     /// Users gr33d home directory
-    const std::string GR33D = getenv("HOME") + std::string{"/.gr33d"};
+    const std::string GR33D{getenv("HOME") + std::string{"/.gr33d"}};
+    /// Usernames history file
+    const std::string NAMELIST{"/name_list.dat"};
+    /// Best score file
+    const std::string SCORESFILE{"/best_scores.dat"};
 
 
     /// Prints comm window with @p message as message
