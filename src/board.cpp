@@ -163,7 +163,14 @@ bool Board::move()
             should_highlight = (should_highlight ? false : true);
             draw();
         }
-        // else if (c == '?')
+        else if (c == '?')
+        {
+            player.message("too dumb to figure out yourself?");
+            help();
+            player.message("enlightened?");
+            draw();
+            continue;
+        }
         else if (c == 'l')
         {
             if (player.confirm())
@@ -203,6 +210,17 @@ void Board::end()
 {
     player.end(); 
     wmove(board_window, player.pos()+Point(1,1));
+}
+
+void Board::help() const
+{
+    WINDOW * help_window = newwin(12, 60, 5, 10);
+    box(help_window, 0, 0);
+
+    wrefresh(help_window);
+    wait();
+    wclear(help_window);
+    delwin(help_window);
 }
 
 Colorizer::Colorizer()

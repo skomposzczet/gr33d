@@ -100,8 +100,11 @@ private:
     /// @returns true if @p needle is in @p haystack
     static bool contains(const std::string haystack, const char needle); 
 
-    // Game end
+    /// Game end
     void end();
+
+    /// Prints help window with short instructions how to play
+    void help() const;
 };
 
 /// ncurses wmove but handles Point class
