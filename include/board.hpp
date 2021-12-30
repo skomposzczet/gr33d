@@ -3,8 +3,6 @@
 
 #include <ncurses.h>
 #include <vector>
-#include <ctime>
-#include <cstdlib>
 
 #include "player.hpp"
 

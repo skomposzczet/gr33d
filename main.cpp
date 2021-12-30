@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctime>
 #include <ncurses.h>
 
 #include "board.hpp"
