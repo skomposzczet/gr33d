@@ -3,12 +3,28 @@
 Player::Player(const std::string _name)
     : name{_name}, score{0}
 {
+    std::filesystem::create_directory(GR33D);
     comm_window = newwin(10, WIDTH+2, 0, 83);
     scoreboard = newwin(14, WIDTH+2, 10, 83);
 
     std::string message = (first_time() ? "new retard on the block" : "this fuxxer again");
 
     print_comm(message);
+
+    std::ifstream score_file(GR33D + SCORESFILE);
+    if (score_file.is_open())
+    {
+        std::string stemp;
+        std::string itemp;
+
+        while(getline(score_file, stemp))
+        {
+            getline(score_file, itemp);
+            top_scores.emplace_back(stemp, std::stoi(itemp));
+        }
+
+        score_file.close();
+    }
     
     print_scoreboard();
 }
@@ -62,7 +78,7 @@ void Player::end()
 {
     // save to best scores if fits
     top_scores.emplace_back(name, score);
-    std::sort(top_scores.begin(), top_scores.end(), [](auto & p1, auto & p2){return (p1.second < p2.second);});
+    std::sort(top_scores.begin(), top_scores.end(), [](auto & p1, auto & p2){return (p1.second > p2.second);});
     if (top_scores.size() > 10)
         top_scores.pop_back();
 
