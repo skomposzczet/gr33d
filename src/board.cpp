@@ -148,7 +148,10 @@ void Board::move()
             c = 'd';
         
         if (!contains(available, c))
+        {
+            player.wrong_move();
             continue;
+        }
 
         if (c == 'h')
         {

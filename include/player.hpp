@@ -89,7 +89,7 @@ public:
     void set_position(const int x, const int y) {set_position(Point(x,y));}
 
     /// Adds @p pts to players score
-    void add_score(const int pts) {score += pts;}
+    void add_score(const int pts) {score += pts; print_comm(mean_message(valid));}
 
     /// @returns players x coord
     int x() const {return position.getx();}
@@ -102,6 +102,9 @@ public:
 
     //
     void end();
+
+    /// Insults user after wrong move
+    void wrong_move() const {print_comm(mean_message(invalid));}
 
 private:
     /// Players current coords
@@ -129,6 +132,13 @@ private:
     /// Best score file
     const std::string SCORESFILE{"/best_scores.dat"};
 
+    /// Mean messages for valid moves
+    static const std::vector<std::string> mean_val;
+    /// Mean messages for invalid moves
+    static const std::vector<std::string> mean_inv;
+    /// Message types recognized by mean_message()
+    /// @see mean_message()
+    enum mess_type{valid, invalid};
 
     /// Prints comm window with @p message as message
     void print_comm(const std::string message) const;
@@ -138,6 +148,10 @@ private:
 
     ///@returns true if players username is used for the first time
     bool first_time() const;
+
+    /// @returns mean message 
+    /// @param type if true returns message for valid move, false for invalid move
+    static std::string mean_message(const int type);
 
 };
 
