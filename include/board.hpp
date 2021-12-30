@@ -36,6 +36,7 @@ class Board
 {
 public:
     Board(const std::string name, const int _height = 22, const int _width = 80);
+    ~Board() {delwin(board_window);}
 
     /// Draws board
     void draw();

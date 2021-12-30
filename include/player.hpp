@@ -84,6 +84,7 @@ class Player
 {
 public:
     Player(const std::string _name);
+    ~Player() {delwin(comm_window), delwin(scoreboard);}
 
     /// Sets new players position
     void set_position(const Point new_position) {position = new_position;}
@@ -124,7 +125,6 @@ private:
 
     /// Window displaying current players data and stuff
     WINDOW * comm_window;
-
     /// Window displaying current scoreboard
     WINDOW * scoreboard;
 
