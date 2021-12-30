@@ -2,6 +2,7 @@
 #define __PLAYER__H__
 
 #include <string>
+#include <vector>
 #include <ncurses.h>
 
 #define WIDTH (34)
@@ -112,9 +113,15 @@ private:
     /// Window displaying current scoreboard
     WINDOW * scoreboard;
 
+    /// Best total scores so far
+    std::vector< std::pair<std::string, int> > top_scores;
+
 
     /// Prints comm window with @p message as message
     void print_comm(const std::string message) const;
+
+    /// Prints scoreboard
+    void print_scoreboard() const;
 
 };
 
