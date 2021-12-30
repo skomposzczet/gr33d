@@ -15,6 +15,7 @@ Player::Player(const std::string _name)
 
 void Player::print_comm(const std::string message) const
 {
+    wclear(comm_window);
     box(comm_window, 0, 0);
     mvwprintw(comm_window, 1, 1, "username:\t%.*s", WIDTH, name.data());
     mvwprintw(comm_window, 3, 1, "score:\t\t%d", score);
@@ -26,6 +27,7 @@ void Player::print_comm(const std::string message) const
 
 void Player::print_scoreboard() const
 {
+    wclear(scoreboard);
     box(scoreboard, 0, 0);
     mvwprintw(scoreboard, 1, 1, "       S C O R E B O A R D");
     mvwprintw(scoreboard, 2, 1, "##################################");
