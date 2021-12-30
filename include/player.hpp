@@ -107,7 +107,11 @@ public:
     /// Insults user after wrong move
     void wrong_move() const {print_comm(mean_message(invalid));}
 
+    /// Asks user for confirmation
+    bool confirm(std::string mess = "Are you sure?");
 
+    /// Prints message @p mess
+    void message(std::string mess) const {print_comm(mess);}
 private:
     /// Players current coords
     Point position;

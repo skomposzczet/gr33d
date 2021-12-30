@@ -166,8 +166,13 @@ bool Board::move()
         // else if (c == '?')
         else if (c == 'l')
         {
-            end();
-            return false;
+            if (player.confirm())
+            {
+                end();
+                return false;
+            }
+            
+            player.message("so close...");
         }
 
         player_move(c);

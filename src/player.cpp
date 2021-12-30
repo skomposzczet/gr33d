@@ -117,3 +117,15 @@ std::string Player::mean_message(const int type)
     const int size = vec.size();
     return vec.at(random(size-1, 0));
 }
+
+bool Player::confirm(std::string mess)
+{
+    mess += " y/[n]";
+    print_comm(mess);
+    wmove(comm_window, 6, mess.size() + 2);
+    keypad(comm_window, true);
+    int c = wgetch(comm_window);
+    keypad(comm_window, false);
+    
+    return (c == 'y' || c == 'Y');
+}
