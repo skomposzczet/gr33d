@@ -99,6 +99,7 @@ void Player::end()
     }
     
     print_scoreboard();
+    print_comm("finally you fxxk off");
 
     // saving unsername to history
     std::fstream name_list(GR33D + NAMELIST, std::fstream::app);

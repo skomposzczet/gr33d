@@ -130,8 +130,13 @@ bool Board::valid(const Point p)
     return true;
 }
 
-void Board::move()
+bool Board::move()
 {
+    if (possible_moves.empty())
+    {
+        end();
+        return false;
+    }
     std::string available{possible_moves+options};
     int c;
     while (1)
@@ -159,11 +164,17 @@ void Board::move()
             draw();
         }
         // else if (c == '?')
-        // else if (c == 'l')
+        else if (c == 'l')
+        {
+            end();
+            return false;
+        }
 
         player_move(c);
         break;
     }
+
+    return true;
 }
 
 void Board::player_move(const char direction)
@@ -181,6 +192,12 @@ void Board::player_move(const char direction)
     at(walker) = 0;
     player.set_position(walker);
     player.add_score(length);
+}
+
+void Board::end()
+{
+    player.end(); 
+    wmove(board_window, player.pos()+Point(1,1));
 }
 
 Colorizer::Colorizer()

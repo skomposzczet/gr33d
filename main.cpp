@@ -26,11 +26,13 @@ int main(int argc, char *argv[])
     // std::cin >> name;
     name = "titane";
     ncwrap nc;
+    bool play = true;
 
     Board board(name);
-    while(1)
+    while(play)
     {
         board.draw();
-        board.move();
+        play = board.move();
     }
+    board.wait();
 }

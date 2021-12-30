@@ -101,11 +101,12 @@ public:
     /// @returns point with players coords
     Point pos() const {return position;}
 
-    //
+    // Game end
     void end();
 
     /// Insults user after wrong move
     void wrong_move() const {print_comm(mean_message(invalid));}
+
 
 private:
     /// Players current coords

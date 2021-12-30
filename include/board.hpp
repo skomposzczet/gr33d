@@ -41,9 +41,9 @@ public:
     void draw();
 
     /// Gets input from player and acts accordingly
-    void move();
+    bool move();
 
-    // debug purpose
+    // debug purpose, or not
     void wait() const { wgetch(board_window); }
 private:
     /// Board window
@@ -99,6 +99,9 @@ private:
 
     /// @returns true if @p needle is in @p haystack
     static bool contains(const std::string haystack, const char needle); 
+
+    // Game end
+    void end();
 };
 
 /// ncurses wmove but handles Point class
