@@ -99,9 +99,6 @@ private:
     /// Makes vector that moves point in @p direction
     static Point make_vector(const char direction);
 
-    /// @returns random int from @p min : @p max , default is 1:9
-    static int rand(const int max = 9, const int min = 1) {return ::rand()%(max-min) + min;}
-
     /// @returns true if @p needle is in @p haystack
     static bool contains(const std::string haystack, const char needle); 
 };

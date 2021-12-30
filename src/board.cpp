@@ -1,4 +1,5 @@
 #include "board.hpp"
+#include "header.hpp"
 
 Board::Board(const std::string name, const int _height, const int _width)
     : height{_height}, width{_width}, should_highlight{true}, player{name}
@@ -16,12 +17,12 @@ Board::Board(const std::string name, const int _height, const int _width)
         std::vector<int> temp(width,0);
 
         for (int x = 0 ; x < width ; x++)
-            temp.at(x) = Board::rand();
+            temp.at(x) = random(9, 1);
         
         board.push_back(temp);
     }
 
-    player.set_position(Point(Board::rand(width-1, 0), Board::rand(height-1, 0)) );
+    player.set_position(Point(random(width-1, 0), random(height-1, 0)) );
     at(player.pos()) = 0;
 }
 
