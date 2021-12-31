@@ -131,12 +131,12 @@ private:
     /// Best total scores so far
     std::vector< std::pair<std::string, int> > top_scores;
 
-    /// Users gr33d home directory
-    const std::string GR33D{getenv("HOME") + std::string{"/.gr33d"}};
-    /// Usernames history file
-    const std::string NAMELIST{"/name_list.dat"};
-    /// Best score file
-    const std::string SCORESFILE{"/best_scores.dat"};
+    // /// Users gr33d home directory
+    // const std::string GR33D{getenv("HOME") + std::string{"/.gr33d"}};
+    // /// Usernames history file
+    // const std::string NAMELIST{"/name_list.dat"};
+    // /// Best score file
+    // const std::string SCORESFILE{"/best_scores.dat"};
 
     /// Mean messages for valid moves
     static const std::vector<std::string> mean_val;

@@ -5,6 +5,13 @@
 #include <ncurses.h>
 #include <iostream>
 
+/// Users gr33d home directory
+const std::string GR33D{getenv("HOME") + std::string{"/.gr33d"}};
+/// Usernames history file
+const std::string NAMELIST{"/name_list.dat"};
+/// Best score file
+const std::string SCORESFILE{"/best_scores.dat"};
+
 /// @returns random int from @p min : @p max , default is 1:9
 int random(const int max, const int min);
 
