@@ -4,22 +4,14 @@
 
 #include "board.hpp"
 
-
-class ncwrap
-{
-public:
-    ncwrap(bool ec = true, bool cb = true) { 
-        initscr(); 
-        if (ec) noecho(); 
-        if (cb) cbreak();
-    }
-
-    ~ncwrap() { endwin(); }
-    void refresh() { ::refresh(); }
-};
-
 int main(int argc, char *argv[])
 {
+    if (!term_test())
+    {
+        std::cout << "At least 22 x 80 terminal required" << std::endl;
+        return 1;
+    }
+
     srand(static_cast<unsigned>(time(NULL)));
     std::string name;
     // std::cout << "What's your name? ";
