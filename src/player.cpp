@@ -108,7 +108,6 @@ void Player::end()
         name_list << name << std::endl;
         name_list.close();
     }
-
 }
 
 std::string Player::mean_message(const int type)

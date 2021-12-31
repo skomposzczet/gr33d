@@ -96,9 +96,7 @@ void Board::print(const int x, const int y, bool bg) const
     int sym = at(x,y);
 
     if (sym == 0)
-    {
         wprintw(board_window, "@");
-    }
     else if (sym < 0)
         wprintw(board_window, " ");
     else if (sym > 0 && sym < 10)

@@ -17,6 +17,7 @@ void help();
 /// Prints scoreboard (no curser)
 void scoreboard();
 
+/// ncurses wrapper
 class ncwrap
 {
 public:
