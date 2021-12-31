@@ -10,7 +10,7 @@ endif ()
 
 # set(CXX g++)
 set(CMAKE_CXX_COMPILER /usr/bin/g++)
-set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_BUILD_TYPE Release)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS_DEBUG_INIT "-Wall --pedantic")
@@ -28,3 +28,5 @@ target_link_libraries(${PROJECT_NAME} Map ncurses)
 
 add_custom_target(run ./${PROJECT_NAME})
 add_custom_target(debug gdb ./${PROJECT_NAME})
+
+install(TARGETS ${PROJECT_NAME} DESTINATION games)
