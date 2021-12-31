@@ -1,7 +1,7 @@
 #include "board.hpp"
 
-Board::Board(const std::string name, const int _height, const int _width)
-    : height{_height}, width{_width}, should_highlight{true}, player{name}
+Board::Board(const std::string name, const bool hl, const int _height, const int _width)
+    : height{_height}, width{_width}, should_highlight{hl}, player{name}
 {
     // initializing board window
     board_window = newwin(height+2, width+2, 0, 0);
