@@ -36,7 +36,7 @@ void Player::print_comm(const std::string message) const
 {
     wclear(comm_window);
     box(comm_window, 0, 0);
-    mvwprintw(comm_window, 1, 1, "username:\t%.*s", WIDTH, name.data());
+    mvwprintw(comm_window, 1, 1, "username:\t%.19s", name.data());
     mvwprintw(comm_window, 3, 1, "score:\t\t%d", score);
     mvwprintw(comm_window, 4, 1, "      \t\t%.2lf%%", 100.0*score/1760);
     mvwprintw(comm_window, 6, 1, "%.*s", WIDTH, message.data());
