@@ -4,6 +4,8 @@
 #include <cstdlib>
 #include <ncurses.h>
 #include <iostream>
+#include <vector>
+#include <fstream>
 
 /// Users gr33d home directory
 const std::string GR33D{getenv("HOME") + std::string{"/.gr33d"}};
@@ -11,6 +13,8 @@ const std::string GR33D{getenv("HOME") + std::string{"/.gr33d"}};
 const std::string NAMELIST{"/name_list.dat"};
 /// Best score file
 const std::string SCORESFILE{"/best_scores.dat"};
+/// Maximum points
+const int MAXPTS{1760};
 
 /// @returns random int from @p min : @p max , default is 1:9
 int random(const int max, const int min);
