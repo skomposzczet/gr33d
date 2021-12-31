@@ -214,11 +214,16 @@ void Board::end()
 
 void Board::help() const
 {
-    WINDOW * help_window = newwin(12, 60, 5, 10);
-    box(help_window, 0, 0);
+    WINDOW * help_window = newwin(14, 62, 5, 10);
+    std::vector<std::string> help_text{"                gr33d - greed but offensive","","Welcome to gr33d, game inspired by unix game greed.  Goal of", "the game is to clear as  much of  screen as  possible.  Your", "position is marked with '@'. You can  move using  'wsadqezc'", "(you can also use arrows).  You move eating N squares, where", "N is first number  in direction you choose to go.  You can't", "move if move will get you out of board or will cross already", "blank  space.  You  can  press  'h'  to  toogle highlighting", "possible ways or 'l' to quit.  Good luck and have fun!  Psst", "watch out for game host, he can be mean sometimes!"};
 
+    box(help_window, 0, 0);
+    for (unsigned i = 0 ; i < help_text.size() ; i++)
+        mvwprintw(help_window, 1+i, 1, "%s", help_text.at(i).data());
     wrefresh(help_window);
+
     wait();
+
     wclear(help_window);
     delwin(help_window);
 }
