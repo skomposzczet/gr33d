@@ -32,6 +32,10 @@ Clone the project then:
             $ cmake ..
             $ sudo make install
 ```
+## Screenshots
+
+![gr33d_scr](https://user-images.githubusercontent.com/72391558/147831397-5a95c2d7-8640-4f62-babf-7e9a762328be.png)
+
 			
 ## Files:
 
