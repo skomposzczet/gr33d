@@ -6,6 +6,7 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <string>
 
 /// Users gr33d home directory
 const std::string GR33D{getenv("HOME") + std::string{"/.gr33d"}};

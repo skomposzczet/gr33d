@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 {
     if (!term_test())
     {
-        std::cout << "At least 22 x 80 terminal required" << std::endl;
+        std::cout << "At least 24 x 119 terminal required" << std::endl;
         return 1;
     }
 

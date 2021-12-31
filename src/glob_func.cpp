@@ -18,7 +18,6 @@ void help()
 
 void scoreboard()
 {
-    // std::cout << "Here will appear scoreboard" << std::endl;
     std::vector< std::pair<std::string, int> > scores;
     std::ifstream score_file(GR33D + SCORESFILE);
     if (score_file.is_open())
