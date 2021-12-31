@@ -14,14 +14,24 @@ You move eating N squares, where N is first number in direction you choose to go
 
 ## Command line options:
 
---name un <br>
-&nbsp; sets username to un <br><br>
---highlight==false <br>
-&nbsp; toogles highlighting off <br><br>
--s <br>
-&nbsp; prints top scores <br><br>
-help <br>
-&nbsp;prints help page <br>
+    --name <un>
+			sets username to un
+	--highlight==false
+			toogles highlighting off
+	-s
+			prints top scores
+	help
+			prints help page
+		
+## Installing
+Clone the project then:
+```
+            $ cd gr33d
+            $ mkdir build
+            $ cd build
+            $ cmake ..
+            $ sudo make install
+```
 			
 ## Files:
 
