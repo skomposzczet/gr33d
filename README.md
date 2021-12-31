@@ -1,1 +1,1 @@
-# gr33d
+# gr33d - greed but offensive
