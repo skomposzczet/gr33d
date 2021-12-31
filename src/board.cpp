@@ -162,6 +162,7 @@ bool Board::move()
         {
             should_highlight = (should_highlight ? false : true);
             draw();
+            continue;
         }
         else if (c == '?')
         {
