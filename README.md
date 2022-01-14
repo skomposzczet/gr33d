@@ -22,8 +22,12 @@ You move eating N squares, where N is first number in direction you choose to go
 			prints top scores
 	help
 			prints help page
+
+## Requirements
+unix-like os (I know it's possible to compile ncurses app on windows, but I don't know how and I don't care).
 		
 ## Installing
+
 Clone the project then:
 ```
             $ cd gr33d
