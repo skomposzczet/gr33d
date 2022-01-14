@@ -24,17 +24,22 @@ int main(int argc, char *argv[])
             char * temp = argv[i];
             int len = strlen(temp);
 
-            if (strncmp(temp, "--name", len) == 0)
+            if (strncmp(temp, "--name", len) == 0 || strncmp(temp, "--n", len) == 0)
             {
                 if (i+1 < argc)
-                    name = argv[++i];
+                {
+                    // name = argv[++i];
+                    while(i+1 < argc && argv[i+1][0] != '-')
+                        name = name + argv[++i] + ' ';
+                    name.pop_back(); 
+                }
                 else
                 {
                     std::cout << "Invalid name";
                     return 1;
                 }
             }
-            else if (strncmp(temp, "--highlight=false", len) == 0)
+            else if (strncmp(temp, "--highlight=false", len) == 0 || strncmp(temp, "--hl=f", len) == 0)
                 hl = false;
             else if (strncmp(temp, "help", len) == 0)
             {
