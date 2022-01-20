@@ -48,4 +48,4 @@ Clone the project then:
 		
 ## Authors:
 
-skomposzczet (https://github.com/skomposzczet).
+[skomposzczet](https://github.com/skomposzczet)
